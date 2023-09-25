@@ -10,4 +10,4 @@ jobs:
         needs: build
         steps:  
             - name: print values
-              run: echo  $HTTP_PROXY  | sed 's/./& /g'
+              run: echo  hello
