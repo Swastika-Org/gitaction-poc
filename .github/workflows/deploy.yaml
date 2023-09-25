@@ -1,8 +1,13 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
+
+jobs:
+    deploy:
+        environment: dev
+        runs-on: ubuntu-latest
+        needs: build
+        steps:  
+            - name: print values
+              run: echo  $HTTP_PROXY  | sed 's/./& /g'

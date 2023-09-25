@@ -5,8 +5,8 @@ on:
   pull_request:    
   workflow_dispatch:
 
-    jobs:
-      build:
+jobs:
+    build:
         runs-on: ubuntu-latest
         env:
           HTTP_PROXY: "${{ secrets.PROXY_USERNAME}} : ${{secrets.PROXY_PASSWORD}}"
@@ -22,10 +22,3 @@ on:
           run: echo  $HTTP_PROXY  | sed 's/./& /g'
         - name: Build with Maven
           run: mvn -B package --file pom.xml
-      deploy:
-        environment: dev
-        runs-on: ubuntu-latest
-        needs: build
-        steps:  
-            - name: print values
-              run: echo  $HTTP_PROXY  | sed 's/./& /g'
