@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Deploy the application on EKS
 
 on:
   workflow_dispatch:
