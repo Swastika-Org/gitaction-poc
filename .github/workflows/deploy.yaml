@@ -1,6 +1,4 @@
-name: Deploy the application on EKS
-
-name: BROCHURE_API_DEPLOY
+name: Deploy the application
 on:
   workflow_dispatch:
     inputs:
