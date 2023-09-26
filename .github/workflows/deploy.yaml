@@ -11,7 +11,7 @@ on:
       TARGET_IMAGE:
         type: choice
         description: Make a choice
-        options: default: ${{ steps.get_files.outputs.files }}
+        options: ${{ steps.get_files.outputs.files }}
           
 
 jobs:
