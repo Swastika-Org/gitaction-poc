@@ -8,10 +8,6 @@ on:
         options:
           - Dev
           - Integration
-      TARGET_IMAGE:
-        type: choice
-        description: Make a choice
-        options: ${{ steps.get_files.outputs.environment }}
           
 jobs:
   BROCHURE_API_DEPLOY_PREPARE:
