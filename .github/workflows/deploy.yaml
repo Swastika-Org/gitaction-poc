@@ -2,6 +2,13 @@ name: Deploy the application on EKS
 
 on:
   workflow_dispatch:
+    input:
+        TARGET_ENV:
+         type: choice
+         description: Make a choice
+         options:
+            - Dev
+            - Integration
 
 jobs:
     deploy:
@@ -10,4 +17,4 @@ jobs:
         needs: build
         steps:  
             - name: print values
-              run: echo  hello
+              run: echo  "'${{ github.event.inputs.TARGET_ENV }}'"
