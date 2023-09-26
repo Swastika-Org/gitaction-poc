@@ -23,7 +23,7 @@ jobs:
           echo "Deployment starts with env details as '${{ github.event.inputs.TARGET_ENV }}'"
       - id: get_files
       - name: Printing Input Choice of Environment
-         run: |
+        run: |
           echo "files=$(ls -lrt /tmp)" >> $GITHUB_ENV
 
 jobs:
