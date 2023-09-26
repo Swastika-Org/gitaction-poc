@@ -11,9 +11,8 @@ on:
       TARGET_IMAGE:
         type: choice
         description: Make a choice
-        options: ${{ steps.get_files.outputs.files }}
+        options: ${{ steps.get_files.outputs.environment }}
           
-
 jobs:
   BROCHURE_API_DEPLOY_PREPARE:
     runs-on: [ 'ubuntu-latest' ]
@@ -22,6 +21,6 @@ jobs:
         run: |
           echo "Deployment starts with env details as '${{ github.event.inputs.TARGET_ENV }}'"
       - id: get_files
-      - name: Printing Input Choice of Environment
         run: |
-          echo "files=$(ls -lrt /tmp)" >> $GITHUB_ENV
+          if [ "$GITHUB_REF" = "refs/heads/test" ] then echo "::set-output name=environment::test" elif [ "$GITHUB_REF" = "refs/heads/qa" ] then echo "::set-output name=environment::qa" elif [ "$GITHUB_REF" = "refs/heads/master" ] then echo "::set-output name=environment::production" fi
+
