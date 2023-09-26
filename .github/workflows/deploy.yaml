@@ -12,11 +12,10 @@ on:
      #   type: choice
      #   description: Make a choice
      #   options: ${{ steps.get_files.outputs.environment }}
-      tags:
-        description: 'Test scenario tags'
+      TARGET_IMAGE:
+        description: 'Select Docker Image'
         required: true
         type: string
-        default: ${{ steps.get_files.outputs.environment }}
           
 jobs:
   BROCHURE_API_DEPLOY_PREPARE:
@@ -24,7 +23,7 @@ jobs:
     steps:
       - name: Printing Input Choice of Environment
         run: |
-          echo "Deployment starts with env details as '${{ github.event.inputs.TARGET_ENV }}'"
+          echo "Deployment starts with env details as '${{ github.event.inputs.TARGET_ENV }}' and '${{ github.event.inputs.TARGET_IMAGE}}'"
       - id: get_files
         run: |
           if [ "$GITHUB_REF" = "refs/heads/test" ] then echo "::set-output name=environment::test" elif [ "$GITHUB_REF" = "refs/heads/qa" ] then echo "::set-output name=environment::qa" elif [ "$GITHUB_REF" = "refs/heads/master" ] then echo "::set-output name=environment::production" fi
