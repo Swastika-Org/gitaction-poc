@@ -1,14 +1,15 @@
 name: Deploy the application on EKS
 
+name: BROCHURE_API_DEPLOY
 on:
   workflow_dispatch:
-    input:
-        TARGET_ENV:
-         type: choice
-         description: Make a choice
-         options:
-            - Dev
-            - Integration
+    inputs:
+      TARGET_ENV:
+        type: choice
+        description: Make a choice
+        options:
+          - Dev
+          - Integration
 
 jobs:
     deploy:
