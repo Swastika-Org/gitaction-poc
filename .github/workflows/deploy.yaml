@@ -8,6 +8,11 @@ on:
         options:
           - Dev
           - Integration
+      tags:
+        description: 'Test scenario tags'
+        required: true
+        type: string
+        default: ${{ github.ref_name }}
           
 jobs:
   BROCHURE_API_DEPLOY_PREPARE:
