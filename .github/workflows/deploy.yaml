@@ -26,7 +26,6 @@ jobs:
         run: |
           echo "files=$(ls -lrt /tmp)" >> $GITHUB_ENV
 
-jobs:
   BROCHURE_API_DEPLOY:
     needs: BROCHURE_API_DEPLOY_PREPARE
     runs-on: [ 'ubuntu-latest' ]
