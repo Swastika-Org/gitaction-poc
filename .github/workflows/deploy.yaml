@@ -10,10 +10,9 @@ on:
           - Integration
 
 jobs:
-    deploy:
-        environment: dev
-        runs-on: ubuntu-latest
-        needs: build
-        steps:  
-            - name: print values
-              run: echo  "'${{ github.event.inputs.TARGET_ENV }}'"
+  BROCHURE_API_DEPLOY:
+    runs-on: [ 'ubuntu-latest' ]
+    steps:
+      - name: Printing Input Choice of Environment
+        run: |
+          echo "Deployment starts with env details as '${{ github.event.inputs.TARGET_ENV }}'"
