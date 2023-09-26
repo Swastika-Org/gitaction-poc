@@ -25,11 +25,3 @@ jobs:
       - name: Printing Input Choice of Environment
         run: |
           echo "files=$(ls -lrt /tmp)" >> $GITHUB_ENV
-
-  BROCHURE_API_DEPLOY:
-    needs: BROCHURE_API_DEPLOY_PREPARE
-    runs-on: [ 'ubuntu-latest' ]
-    steps:
-      - name: Printing Input Choice of Environment
-        run: |
-          echo "Deployment starts with env details as '${{ github.event.inputs.TARGET_ENV }}'"
