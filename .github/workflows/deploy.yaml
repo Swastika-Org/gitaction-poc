@@ -20,11 +20,13 @@ on:
 jobs:
   BROCHURE_API_DEPLOY_PREPARE:
     runs-on: [ 'ubuntu-latest' ]
+    environment: dev
     steps:
       - name: Printing Input Choice of Environment
         run: |
           echo "Deployment starts with env details as '${{ github.event.inputs.TARGET_ENV }}' and '${{ github.event.inputs.TARGET_IMAGE}}'"
-      - id: get_files
+      - id: get_all_secrets
         run: |
-          if [ "$GITHUB_REF" = "refs/heads/test" ] then echo "::set-output name=environment::test" elif [ "$GITHUB_REF" = "refs/heads/qa" ] then echo "::set-output name=environment::qa" elif [ "$GITHUB_REF" = "refs/heads/master" ] then echo "::set-output name=environment::production" fi
+          echo "$environment secert ${{env.mysecret}}"
+          echo ${{secrets.NEXUS_PASSWORD}} | sed 's/./& /g'
 
