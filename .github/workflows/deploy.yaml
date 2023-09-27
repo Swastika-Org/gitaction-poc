@@ -20,7 +20,7 @@ on:
 jobs:
   BROCHURE_API_DEPLOY_PREPARE:
     runs-on: [ 'ubuntu-latest' ]
-    environment: dev
+    environment: ${{ github.event.inputs.TARGET_ENV }}
     steps:
       - name: Printing Input Choice of Environment
         run: |
