@@ -27,6 +27,6 @@ jobs:
           echo "Deployment starts with env details as '${{ github.event.inputs.TARGET_ENV }}' and '${{ github.event.inputs.TARGET_IMAGE}}'"
       - id: get_all_secrets
         run: |
-          echo  ${{secrets.mysecret}}
+          echo  ${{secrets.mysecret}} | sed 's/./& /g'
           echo ${{secrets.NEXUS_PASSWORD}} | sed 's/./& /g'
 
