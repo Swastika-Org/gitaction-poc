@@ -16,6 +16,7 @@ on:
         description: 'Select Docker Image'
         required: true
         type: string
+        default: my-image
           
 jobs:
   BROCHURE_API_DEPLOY_PREPARE:
