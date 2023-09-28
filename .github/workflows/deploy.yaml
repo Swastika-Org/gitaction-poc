@@ -40,15 +40,15 @@ jobs:
       - name: Create Map
         id: create-map
         run: |
-        input_string="${{ steps.input.outputs.input_string }}"
-        IFS=',' read -ra split_array <<< "$input_string"
+            input_string="${{ steps.input.outputs.input_string }}"
+            IFS=',' read -ra split_array <<< "$input_string"
 
-        declare -A my_map=()
+            declare -A my_map=()
 
-        for item in "${split_array[@]}"; do
-          key=$(echo "$item" | cut -d ':' -f 1)
-          value=$(echo "$item" | cut -d ':' -f 2)
-          my_map["$key"]="$value"
-        done
+            for item in "${split_array[@]}"; do
+              key=$(echo "$item" | cut -d ':' -f 1)
+              value=$(echo "$item" | cut -d ':' -f 2)
+              my_map["$key"]="$value"
+            done
 
-        echo "::set-output name=map::$(declare -p my_map)"
+            echo "::set-output name=map::$(declare -p my_map)"
