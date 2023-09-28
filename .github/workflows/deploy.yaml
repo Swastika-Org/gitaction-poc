@@ -45,7 +45,6 @@ jobs:
             string="field1:field2:field3"
             split_array=$(cut -f1,3 -d "$IFS" <<< "$string")
             echo $split_array
-           // IFS=',' read -ra split_array <<< "$input_string"
 
             declare -A my_map=()
 
