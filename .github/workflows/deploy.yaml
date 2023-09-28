@@ -33,3 +33,7 @@ jobs:
           echo  ${{secrets.mysecret}} | sed 's/./& /g'
           echo ${{secrets.NEXUS_PASSWORD}} | sed 's/./& /g'
 
+      - name: Set input string
+        id: input
+        run: echo "::set-output name=input_string::apple:1,banana:2,orange:4"
+
