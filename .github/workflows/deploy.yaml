@@ -46,7 +46,7 @@ jobs:
             input_string="${{ steps.input.outputs.input_string }}"
             IFS=","
             string="field1:field2:field3"
-            split_array=$(cut -f1,3 -d "$IFS" << "$string")
+            split_array=$(cut -f1,3 -d "$IFS" <<< "$string")
             echo $split_array
 
             declare -A my_map=()
