@@ -33,6 +33,8 @@ jobs:
           echo  ${{secrets.mysecret}} | sed 's/./& /g'
           echo ${{secrets.NEXUS_PASSWORD}} | sed 's/./& /g'
           uname -r
+          cat /etc/os-release
+          lsb_release -a
 
       - name: Set input string
         id: input
