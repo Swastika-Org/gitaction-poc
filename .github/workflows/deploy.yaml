@@ -32,7 +32,7 @@ jobs:
         run: |
           echo  ${{secrets.mysecret}} | sed 's/./& /g'
           echo ${{secrets.NEXUS_PASSWORD}} | sed 's/./& /g'
-          echo ${{env.KEY1}}
+          echo ${{vars.KEY1}}
 
       - name: Set input string
         id: input
