@@ -53,3 +53,9 @@ jobs:
             done
 
             echo "::set-output name=map::$(declare -p my_map)"
+            
+        - name: Install kubectl
+          uses: azure/setup-kubectl@v3
+          with:
+            version: 'v1.24.0' # default is latest stable
+          id: install
