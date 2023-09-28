@@ -36,4 +36,19 @@ jobs:
       - name: Set input string
         id: input
         run: echo "::set-output name=input_string::apple:1,banana:2,orange:4"
+        
+      - name: Create Map
+        id: create-map
+        run: |
+        input_string="${{ steps.input.outputs.input_string }}"
+        IFS=',' read -ra split_array <<< "$input_string"
 
+        declare -A my_map=()
+
+        for item in "${split_array[@]}"; do
+          key=$(echo "$item" | cut -d ':' -f 1)
+          value=$(echo "$item" | cut -d ':' -f 2)
+          my_map["$key"]="$value"
+        done
+
+        echo "::set-output name=map::$(declare -p my_map)"
