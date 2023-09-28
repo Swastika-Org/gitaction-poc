@@ -22,10 +22,12 @@ jobs:
   BROCHURE_API_DEPLOY_PREPARE:
     runs-on: [ 'ubuntu-latest' ]
     environment: ${{ github.event.inputs.TARGET_ENV }}
+    
     steps:
       - name: Printing Input Choice of Environment
         run: |
           echo "Deployment starts with env details as '${{ github.event.inputs.TARGET_ENV }}' and '${{ github.event.inputs.TARGET_IMAGE}}'"
+          
       - id: get_all_secrets
         run: |
           echo  ${{secrets.mysecret}} | sed 's/./& /g'
@@ -34,26 +36,9 @@ jobs:
       - name: Set input string
         id: input
         run: echo "::set-output name=input_string::apple:1,banana:2,orange:4"
-        
-      - name: Create Map
-        id: create-map
-        run: |
-            input_string="${{ steps.input.outputs.input_string }}"
-            
-            IFS=',' read -ra split_array <<< "$input_string"
-
-            declare -A my_map=()
-
-            for item in "${split_array[@]}"; do
-              key=$(echo "$item" | cut -d ':' -f 1)
-              value=$(echo "$item" | cut -d ':' -f 2)
-              my_map["$key"]="$value"
-            done
-
-            echo "::set-output name=map::$(declare -p my_map)"
-            
-       - name: Install kubectl
-         uses: azure/setup-kubectl@v3
-         with:
+                   
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v3
+        with:
            version: 'v1.24.0' # default is latest stable
-         id: install
+        id: install
