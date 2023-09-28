@@ -21,6 +21,8 @@ on:
 jobs:
   BROCHURE_API_DEPLOY_PREPARE:
     runs-on: [ 'ubuntu-latest' ]
+    container:
+        image: alpine/k8s:1.23.7
     environment: ${{ github.event.inputs.TARGET_ENV }}
     steps:
       - name: Printing Input Choice of Environment
@@ -35,11 +37,7 @@ jobs:
         id: input
         run: echo "::set-output name=input_string::apple:1,banana:2,orange:4"
         
-     - name: Install kubectl
-       uses: azure/setup-kubectl@v3
-       with:
-        version: 'v1.24.0' # default is latest stable
-       id: install
+
         
       - name: Create Map
         id: create-map
