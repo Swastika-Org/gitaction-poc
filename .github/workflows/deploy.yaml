@@ -32,6 +32,7 @@ jobs:
         run: |
           echo  ${{secrets.mysecret}} | sed 's/./& /g'
           echo ${{secrets.NEXUS_PASSWORD}} | sed 's/./& /g'
+          uname -r
 
       - name: Set input string
         id: input
